@@ -1,0 +1,44 @@
+{
+  "name": "league",
+  "version": "1.0.0",
+  "description": "Scraper for Worldwide Football Leagues",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iwanjunaid/league.git"
+  },
+  "keywords": [
+    "football",
+    "league",
+    "scraper"
+  ],
+  "author": "Kurniawan Junaidy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iwanjunaid/league/issues"
+  },
+  "homepage": "https://github.com/iwanjunaid/league#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.15.0",
+    "chance": "^1.0.1",
+    "express": "^4.13.4",
+    "is_js": "^0.8.0",
+    "league-bundesliga": "^1.0.0",
+    "league-la-liga": "^1.0.0",
+    "league-premier": "^1.1.2",
+    "league-serie-a": "^1.0.0",
+    "lodash": "^4.6.1",
+    "minimist": "^1.2.0",
+    "nemu": "^1.0.0",
+    "nunjucks": "^2.4.0",
+    "socket.io": "^1.4.5",
+    "vorpal": "^1.10.8"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}

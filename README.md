@@ -1,2 +1,2 @@
 # league
-Scraper for Worldwide Football League
+Scraper for Worldwide Football Leagues
