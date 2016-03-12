@@ -1,15 +1,23 @@
 var async = require('async'),
   path = require('path'),
+  util = require('util'),
+  EventEmitter = require('events'),
   _ = require('lodash');
 var selector = require(path.join(__dirname, 'selector'))();
 
-function Scraper() {}
+function Scraper() {
+  EventEmitter.call(this);
+}
+
+util.inherits(Scraper, EventEmitter);
 
 module.exports = function() {
   return new Scraper();
 };
 
-Scraper.prototype.scrape = function(leagues) {
+Scraper.prototype.scrape = function(id, leagues) {
+  var self = this;
+
   return new Promise(function(resolve, reject) {
     var results = [];
 
@@ -35,10 +43,25 @@ Scraper.prototype.scrape = function(leagues) {
         leagueCb();
       }
     }, function(err) {
-      if (results.length)
-        resolve(_.sortBy(results, 'order'));
-      else
-        resolve(results);
+      if (err) {
+        self.emit('done:with-error', id);
+        reject(err);
+      } else {
+        self.emit('done', id);
+
+        if (results.length) {
+          resolve({
+            uuid: id,
+            results: _.sortBy(results, 'order')
+          });
+        }
+        else {
+          resolve({
+            uuid: id,
+            results: results
+          });
+        }
+      }
     });
   });
 };

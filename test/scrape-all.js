@@ -1,19 +1,45 @@
 describe('Scraping all leagues together', function() {
   var results,
     laLiga, premier, serieA, bundesliga;
+  var uuid = nodeUuid.v1();
+  var event_done_id = null;
 
   before(function(done) {
-    scraper.scrape([
+    var scraper = new Scraper();
+
+    scraper.on('done', function(id) {
+      event_done_id = id;
+    });
+
+    scraper.scrape(uuid, [
       {league: 'bundesliga', order: 4},
       {league: 'premier', order: 2},
       {league: 'la-liga', order: 1},
       {league: 'serie-a', order: 3}
     ]).then(function(res) {
-      results = res;
+      results = res.results;
       laLiga = results[0];
       premier = results[1];
       serieA = results[2];
       bundesliga = results[3];
+      done();
+    }).catch(function(err) {
+      done(err);
+    });
+  });
+
+  describe('Overall', function() {
+    it('should emits event "done" with id ' + uuid, function(done) {
+      assert.equal(uuid, event_done_id);
+      done();
+    });
+
+    it('should returns four leagues result', function(done) {
+      assert.equal(4, results.length);
+      assert.notEqual(0, results[0].data.length);
+      assert.notEqual(0, results[1].data.length);
+      assert.notEqual(0, results[2].data.length);
+      assert.notEqual(0, results[3].data.length);
       done();
     });
   });
@@ -50,7 +76,7 @@ describe('Scraping all leagues together', function() {
       done();
     });
 
-    it('should has property "order" with value 1', function(done) {
+    it('should has property "order" with value 2', function(done) {
       assert.equal(2, premier.order);
       done();
     });
@@ -76,7 +102,7 @@ describe('Scraping all leagues together', function() {
       done();
     });
 
-    it('should has property "order" with value 1', function(done) {
+    it('should has property "order" with value 3', function(done) {
       assert.equal(3, serieA.order);
       done();
     });
@@ -102,7 +128,7 @@ describe('Scraping all leagues together', function() {
       done();
     });
 
-    it('should has property "order" with value 1', function(done) {
+    it('should has property "order" with value 4', function(done) {
       assert.equal(4, bundesliga.order);
       done();
     });
