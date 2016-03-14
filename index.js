@@ -1,5 +1,4 @@
 var path = require('path');
 
-module.exports = function() {
-  return new require(path.join(__dirname, 'libs/scraper.js'))();
-};
+exports.scraper = require(path.join(__dirname, 'libs/scraper.js'));
+exports.excel = require(path.join(__dirname, 'libs/excel.js'));
