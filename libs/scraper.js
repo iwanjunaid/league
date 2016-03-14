@@ -18,7 +18,7 @@ module.exports = function() {
 Scraper.prototype.scrape = function(id, leagues) {
   var self = this;
 
-  self.emit('starting');
+  self.emit('starting', id);
 
   return new Promise(function(resolve, reject) {
     var results = [];
@@ -27,11 +27,11 @@ Scraper.prototype.scrape = function(id, leagues) {
       var scraper = selector.getScraper(league.league);
 
       if (scraper) {
-        self.emit('initializing');
+        self.emit('initializing', {uuid: id, league: league.league});
 
         scraper.init(function() {
-          self.emit('scraping');
-          
+          self.emit('scraping', {uuid: id, league: league.league});
+
           scraper.helpers.standings.full().then(function(res) {
             res.driver.close();
             results.push({
