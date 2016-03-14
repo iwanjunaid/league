@@ -17,8 +17,11 @@ module.exports = function() {
 
 Scraper.prototype.scrape = function(id, leagues) {
   var self = this;
+  var progress = 0;
+  var progressIncrement = 100 / leagues.length;
 
   self.emit('starting', id);
+  self.emit('progress', {uuid: id, progress: progress});
 
   return new Promise(function(resolve, reject) {
     var results = [];
@@ -41,6 +44,8 @@ Scraper.prototype.scrape = function(id, leagues) {
               data: res.data
             });
 
+            progress += progressIncrement;
+            self.emit('progress', {uuid: id, progress: progress});
             leagueCb();
           }).catch(function(err) {
             leagueCb(err);

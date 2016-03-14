@@ -2,6 +2,14 @@ var app = require('./index');
 var scraper = app.scraper();
 var excel = app.excel();
 
+scraper.on('starting', function(id) {
+  console.log(id);
+});
+
+scraper.on('progress', function(stat) {
+  console.log(stat.progress);
+});
+
 scraper.scrape(1, [
   {league: 'la-liga', order: 1},
   {league: 'premier', order: 2},
@@ -12,6 +20,7 @@ scraper.scrape(1, [
     console.log(res);
   });
 });
+
 
 excel.on('done', function(res) {
   console.log(res);
