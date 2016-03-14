@@ -2,12 +2,32 @@ var app = require('./index');
 var scraper = app.scraper();
 var excel = app.excel();
 
+process.on('uncaughtException', (err) => {
+  console.log(err);
+});
+
 scraper.on('starting', function(id) {
-  console.log(id);
+  console.log('event:', 'starting', id);
 });
 
 scraper.on('progress', function(stat) {
-  console.log(stat.progress);
+  console.log('event:', 'progress', stat);
+});
+
+scraper.on('initializing', function(stat) {
+  console.log('event:', 'initializing', stat);
+});
+
+scraper.on('scraping', function(stat) {
+  console.log('event:', 'scraping', stat);
+});
+
+scraper.on('scraped', function(stat) {
+  console.log('event:', 'scraped', stat);
+});
+
+scraper.on('done', function(stat) {
+  console.log('event:', 'done', stat);
 });
 
 scraper.scrape(1, [
@@ -22,6 +42,6 @@ scraper.scrape(1, [
 });
 
 
-excel.on('done', function(res) {
-  console.log(res);
-});
+// excel.on('done', function(res) {
+//   console.log(res);
+// });

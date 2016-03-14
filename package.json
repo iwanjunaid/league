@@ -1,6 +1,6 @@
 {
   "name": "leagues",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Scraper for Worldwide Football Leagues",
   "main": "index.js",
   "scripts": {

@@ -1,3 +1,5 @@
+'use strict'
+
 var async = require('async'),
   path = require('path'),
   util = require('util'),
@@ -45,6 +47,7 @@ Scraper.prototype.scrape = function(id, leagues) {
             });
 
             progress += progressIncrement;
+            self.emit('scraped', {uuid: id, league: league.league});
             self.emit('progress', {uuid: id, progress: progress});
             leagueCb();
           }).catch(function(err) {
