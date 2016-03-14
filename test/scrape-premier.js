@@ -32,6 +32,14 @@ describe('Scraping Premier League', function() {
     done();
   });
 
+  it('should returns proper scraper info', function(done) {
+    var info = results[0].scraperInfo;
+
+    assert.equal('premier', info.name);
+    assert.equal('Premier League', info.label);
+    done();
+  });
+
   it('should has property "league" with value "premier"', function(done) {
     assert.equal('premier', results[0].league);
     done();

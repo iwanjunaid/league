@@ -31,6 +31,7 @@ Scraper.prototype.scrape = function(id, leagues) {
             results.push({
               league: league.league,
               order: league.order,
+              scraperInfo: scraper.info(),
               data: res.data
             });
 

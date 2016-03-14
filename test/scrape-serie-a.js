@@ -32,6 +32,14 @@ describe('Scraping Serie A League', function() {
     done();
   });
 
+  it('should returns proper scraper info', function(done) {
+    var info = results[0].scraperInfo;
+
+    assert.equal('serie-a', info.name);
+    assert.equal('Serie A', info.label);
+    done();
+  });
+
   it('should has property "league" with value "serie-a"', function(done) {
     assert.equal('serie-a', results[0].league);
     done();

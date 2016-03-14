@@ -55,6 +55,14 @@ describe('Scraping all leagues together', function() {
       done();
     });
 
+    it('should returns proper scraper info', function(done) {
+      var info = laLiga.scraperInfo;
+
+      assert.equal('la-liga', info.name);
+      assert.equal('La Liga', info.label);
+      done();
+    });
+
     it('should has "pos", "club", "played", "won", "drawn", "lost", "goalsFor", "goalsAgainst", "goalDifference", "points" properties', function(done) {
       assert.equal(true, laLiga.data[0].hasOwnProperty('pos'));
       assert.equal(true, laLiga.data[0].hasOwnProperty('club'));
@@ -78,6 +86,14 @@ describe('Scraping all leagues together', function() {
 
     it('should has property "order" with value 2', function(done) {
       assert.equal(2, premier.order);
+      done();
+    });
+
+    it('should returns proper scraper info', function(done) {
+      var info = premier.scraperInfo;
+
+      assert.equal('premier', info.name);
+      assert.equal('Premier League', info.label);
       done();
     });
 
@@ -107,6 +123,14 @@ describe('Scraping all leagues together', function() {
       done();
     });
 
+    it('should returns proper scraper info', function(done) {
+      var info = serieA.scraperInfo;
+
+      assert.equal('serie-a', info.name);
+      assert.equal('Serie A', info.label);
+      done();
+    });
+
     it('should has "pos", "club", "played", "won", "drawn", "lost", "goalsFor", "goalsAgainst", "goalDifference", "points" properties', function(done) {
       assert.equal(true, serieA.data[0].hasOwnProperty('pos'));
       assert.equal(true, serieA.data[0].hasOwnProperty('club'));
@@ -130,6 +154,14 @@ describe('Scraping all leagues together', function() {
 
     it('should has property "order" with value 4', function(done) {
       assert.equal(4, bundesliga.order);
+      done();
+    });
+
+    it('should returns proper scraper info', function(done) {
+      var info = bundesliga.scraperInfo;
+
+      assert.equal('bundesliga', info.name);
+      assert.equal('Bundesliga', info.label);
       done();
     });
 

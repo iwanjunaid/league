@@ -1,6 +1,6 @@
 {
   "name": "leagues",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scraper for Worldwide Football Leagues",
   "main": "index.js",
   "scripts": {
@@ -28,10 +28,10 @@
     "chance": "^1.0.1",
     "express": "^4.13.4",
     "is_js": "^0.8.0",
-    "league-bundesliga": "^1.0.0",
-    "league-la-liga": "^1.0.0",
-    "league-premier": "^1.1.2",
-    "league-serie-a": "^1.0.0",
+    "league-bundesliga": "1.x",
+    "league-la-liga": "1.x",
+    "league-premier": "1.x",
+    "league-serie-a": "1.x",
     "lodash": "^4.6.1",
     "minimist": "^1.2.0",
     "nemu": "^1.0.0",

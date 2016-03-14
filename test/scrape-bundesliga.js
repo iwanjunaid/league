@@ -32,6 +32,14 @@ describe('Scraping Bundesliga', function() {
     done();
   });
 
+  it('should returns proper scraper info', function(done) {
+    var info = results[0].scraperInfo;
+
+    assert.equal('bundesliga', info.name);
+    assert.equal('Bundesliga', info.label);
+    done();
+  });
+
   it('should has property "league" with value "bundesliga"', function(done) {
     assert.equal('bundesliga', results[0].league);
     done();
