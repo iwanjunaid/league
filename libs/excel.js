@@ -47,7 +47,7 @@ function processWorksheet(workbook, data) {
         sheet.getCell('F' + (row.pos + 2)).value = row.lost;
         sheet.getCell('G' + (row.pos + 2)).value = row.goalsFor;
         sheet.getCell('H' + (row.pos + 2)).value = row.goalsAgainst;
-        sheet.getCell('I' + (row.pos + 2)).value = row.difference;
+        sheet.getCell('I' + (row.pos + 2)).value = row.goalDifference;
         sheet.getCell('J' + (row.pos + 2)).value = row.points;
         rowCb(null);
       }, function(err) {
